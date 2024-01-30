@@ -14,7 +14,6 @@ const Contact = () => {
       </div>
       <div className={styles.formContainer}>
         <form action="" className={styles.form}>
-          <h1>Contact us</h1>
           <input type="text" name="name" placeholder="Name" />
           <input type="email" name="email" placeholder="Email" />
           <input type="tel" name="tel" placeholder="Phone Number(Optional)" />
