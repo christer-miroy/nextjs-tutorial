@@ -1,6 +1,6 @@
-const page = () => {
+const Admin = () => {
   return (
     <div>Admin</div>
   )
 }
-export default page
+export default Admin

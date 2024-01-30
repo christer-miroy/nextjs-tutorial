@@ -1,6 +1,6 @@
-const page = () => {
+const Register = () => {
   return (
     <div>Register</div>
   )
 }
-export default page
+export default Register

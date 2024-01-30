@@ -1,6 +1,6 @@
-const page = () => {
+const Blog = () => {
   return (
     <div>Blog</div>
   )
 }
-export default page
+export default Blog
