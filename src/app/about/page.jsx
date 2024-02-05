@@ -1,5 +1,10 @@
-import Image from "next/image"
-import styles from "./about.module.css"
+import Image from 'next/image';
+import styles from './about.module.css';
+
+export const metadata = {
+  title: 'About',
+  description: 'About Page',
+};
 
 const About = () => {
   return (
@@ -41,5 +46,5 @@ const About = () => {
       </div>
     </div>
   );
-}
-export default About
+};
+export default About;
