@@ -1,5 +1,6 @@
-import { getUser } from "@/lib/data";
-import styles from "./postUser.module.css"
+import { getUser } from '@/lib/data';
+import styles from './postUser.module.css';
+import Image from 'next/image';
 
 // fetch data with API
 // const getData = async (userId) => {
@@ -12,7 +13,7 @@ import styles from "./postUser.module.css"
 //   return res.json();
 // };
 
-const PostUser = async ({userId}) => {
+const PostUser = async ({ userId }) => {
   // fetch data with API
   // const user = await getData(userId);
 
@@ -21,9 +22,18 @@ const PostUser = async ({userId}) => {
 
   return (
     <div className={styles.container}>
-      <span className={styles.title}>Author</span>
-      <span className={styles.username}>{user.username}</span>
+      <Image
+        src={user.img ? user.img : '/noavatar.png'}
+        alt="house"
+        className={styles.avatar}
+        width={50}
+        height={50}
+      />
+      <div className={styles.texts}>
+        <span className={styles.title}>Author</span>
+        <span className={styles.username}>{user.username}</span>
+      </div>
     </div>
   );
-}
-export default PostUser
+};
+export default PostUser;
