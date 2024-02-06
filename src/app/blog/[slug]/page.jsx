@@ -16,25 +16,25 @@ export const generateMetadata = async ({ params }) => {
 };
 
 // fetch data with API
-// const getData = async (slug) => {
-//   const res = await fetch(
-//     `https://jsonplaceholder.typicode.com/posts/${slug}`
-//   );
+const getData = async (slug) => {
+  const res = await fetch(
+    `http://localhost:3000/api/blog/${slug}`
+  );
 
-//   if (!res.ok) {
-//     throw new Error('Something went wrong!');
-//   }
+  if (!res.ok) {
+    throw new Error('Something went wrong!');
+  }
 
-//   return res.json();
-// };
+  return res.json();
+};
 
 const SinglePost = async ({ params }) => {
   const { slug } = params;
   // fetch data with API
-  // const post = await getData(slug);
+  const post = await getData(slug);
 
   // fetch data WITHOUT API
-  const post = await getPost(slug);
+  // const post = await getPost(slug);
 
   return (
     <div className={styles.container}>
