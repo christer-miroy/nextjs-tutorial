@@ -116,8 +116,6 @@ export const login = async (previousState, formData) => {
         error: 'Invalid username or password.',
       };
     }
-    return {
-      error: 'Something went wrong',
-    };
+    throw error;
   }
 };
