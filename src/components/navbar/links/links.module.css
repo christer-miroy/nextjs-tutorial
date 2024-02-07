@@ -9,6 +9,8 @@
     cursor: pointer;
     font-weight: 500;
     border-radius: 20px;
+    background-color: var(--text);
+    color: var(--bg);
 }
 
 .menuBtn,
