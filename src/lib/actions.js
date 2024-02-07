@@ -5,7 +5,7 @@ import { connectToDB } from './utils';
 import { signIn, signOut } from './auth';
 import bcryptjs from 'bcryptjs';
 
-export const addPost = async (formData) => {
+export const addPost = async (previousState, formData) => {
   //   const title = formData.get('title');
   //   const desc = formData.get('desc');
   //   const slug = formData.get('slug');
@@ -25,6 +25,7 @@ export const addPost = async (formData) => {
     await newPost.save();
     console.log('Post saved to database');
     revalidatePath('/blog');
+    revalidatePath('/admin');
   } catch (error) {
     console.log(error);
     return {
@@ -40,8 +41,50 @@ export const deletePost = async (formData) => {
     connectToDB();
 
     await Post.findByIdAndDelete(id).exec();
-    console.log('Deleted from database');
+    console.log('Post deleted from database');
     revalidatePath('/blog');
+    revalidatePath('/blog');
+  } catch (error) {
+    console.log(error);
+    return {
+      error: 'Something went wrong',
+    };
+  }
+};
+
+export const addUser = async (previousState, formData) => {
+  const { username, email, password, img } = Object.fromEntries(formData);
+
+  try {
+    connectToDB();
+    const newUser = new User({
+      username,
+      email,
+      password,
+      img,
+    });
+
+    await newUser.save();
+    console.log('User saved to database');
+    revalidatePath('/admin');
+  } catch (error) {
+    console.log(error);
+    return {
+      error: 'Something went wrong',
+    };
+  }
+};
+
+export const deleteUser = async (formData) => {
+  const { id } = Object.fromEntries(formData);
+
+  try {
+    connectToDB();
+
+    await Post.deleteMany({ userId: id });
+    await User.findByIdAndDelete(id).exec();
+    console.log('User deleted from database');
+    revalidatePath('/admin');
   } catch (error) {
     console.log(error);
     return {

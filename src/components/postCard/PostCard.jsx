@@ -1,22 +1,19 @@
-import Image from 'next/image'
-import styles from './postCard.module.css'
-import Link from 'next/link'
+import Image from 'next/image';
+import styles from './postCard.module.css';
+import Link from 'next/link';
 
-const PostCard = ({post}) => {
+const PostCard = ({ post }) => {
   return (
     <div className={styles.container}>
       <div className={styles.top}>
         <div className={styles.imgContainer}>
           {post.img && (
-            <Image
-              src={post.img}
-              alt="house"
-              fill
-              className={styles.img}
-            />
+            <Image src={post.img} alt="house" fill className={styles.img} />
           )}
         </div>
-        <span className={styles.date}>{post.createdAt.toString().slice(4, 16)}</span>
+        <span className={styles.date}>
+          {post.createdAt?.toString().slice(0, 10)}
+        </span>
       </div>
       <div className={styles.bottom}>
         <h1 className={styles.title}>{post.title}</h1>
@@ -27,5 +24,5 @@ const PostCard = ({post}) => {
       </div>
     </div>
   );
-}
-export default PostCard
+};
+export default PostCard;

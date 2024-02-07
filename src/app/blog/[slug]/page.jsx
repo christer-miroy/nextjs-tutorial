@@ -17,9 +17,7 @@ export const generateMetadata = async ({ params }) => {
 
 // fetch data with API
 const getData = async (slug) => {
-  const res = await fetch(
-    `http://localhost:3000/api/blog/${slug}`
-  );
+  const res = await fetch(`http://localhost:3000/api/blog/${slug}`);
 
   if (!res.ok) {
     throw new Error('Something went wrong!');
@@ -54,7 +52,11 @@ const SinglePost = async ({ params }) => {
           <div className={styles.detailText}>
             <span className={styles.detailTitle}>Published</span>
             <span className={styles.detailValue}>
-              {post.createdAt.toString().slice(4, 16)}
+              {new Date(post.createdAt).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'short',
+                day: '2-digit',
+              })}
             </span>
           </div>
         </div>
